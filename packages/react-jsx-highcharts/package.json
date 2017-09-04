@@ -9,7 +9,9 @@
   ],
   "scripts": {
     "build": "cross-env NODE_ENV=development ./node_modules/.bin/webpack",
+    "build:css": "cross-env NODE_ENV=development MODE=CSS ./node_modules/.bin/webpack",
     "build:prod": "cp ../../README.md . && cross-env NODE_ENV=production ./node_modules/.bin/webpack -p",
+    "build:css:prod": "cp ../../README.md . && cross-env MODE=CSS NODE_ENV=production ./node_modules/.bin/webpack -p",
     "lint": "./node_modules/.bin/eslint src",
     "test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha --compilers js:babel-core/register --require test/test-helper.js test/**/*.spec.js"
   },
@@ -44,6 +46,7 @@
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-module-resolver": "^2.7.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.5",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",

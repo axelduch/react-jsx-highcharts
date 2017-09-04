@@ -4,7 +4,22 @@ const fs = require('fs');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const isProd = (process.env.NODE_ENV === 'production');
+const styledMode = (process.env.MODE === 'CSS');
+
 const babelSettings = JSON.parse(fs.readFileSync('.babelrc'));
+
+
+if (babelSettings.plugins && styledMode) {
+    console.log('Using highcharts/js/highcharts.js instead of highcharts.js - styled mode');
+    babelSettings.plugins.push([
+      "module-resolver", {
+      "root": ["."],
+      "alias": {
+        "highcharts": "./node_modules/highcharts/js/highcharts"
+      }
+    }]
+    );
+}
 
 const webpackConfig = {
   entry: path.resolve(__dirname, 'src'),
