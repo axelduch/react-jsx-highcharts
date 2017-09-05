@@ -15,7 +15,7 @@ if (babelSettings.plugins && styledMode) {
       "module-resolver", {
       "root": ["."],
       "alias": {
-        "highcharts": "./node_modules/highcharts/js/highcharts"
+        "highcharts": "highcharts/js/highcharts"
       }
     }]
     );
